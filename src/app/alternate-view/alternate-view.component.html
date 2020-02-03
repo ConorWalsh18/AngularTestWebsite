@@ -1,0 +1,39 @@
+<!-- Header -->
+<div class="header">
+  <div class="title" (click)="switchPage('homePage')">
+    <i class="fa fa-user"></i>
+    Test Website
+  </div>
+  <ul class="menu-list">
+    <li (click)="switchPage('testPageOne')">Elements</li>
+    <li (click)="switchPage('testPageTwo')">Traversal</li>
+    <li (click)="switchPage('testPageThree')">Bite</li>
+    <li (click)="switchPage('testPageFour')">Test Page 4</li>
+    <li (click)="switchPage('testPageFive')">Test Page 5</li>
+  </ul>
+</div>
+
+<!-- Pages -->
+<div id="homePage" class="test-page">
+  <h1>Home Page</h1>
+</div>
+
+<div class="test-page test-page-one">
+  <test-page-one></test-page-one>
+</div>
+
+<div class="test-page test-page-two">
+  <test-page-two></test-page-two>
+</div>
+
+<div class="test-page test-page-three">
+  <test-page-three></test-page-three>
+</div>
+
+<div class="test-page test-page-four">
+  <h1>Test Page 4</h1>
+</div>
+
+<div class="test-page test-page-five">
+  <h1>Test Page 5</h1>
+</div>

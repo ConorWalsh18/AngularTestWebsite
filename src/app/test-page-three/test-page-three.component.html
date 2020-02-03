@@ -1,0 +1,15 @@
+<div class="brightmare-top-half center"
+     [@biteTopHalf]="bite"
+     (click)="biteButton(true)">
+</div>
+
+<button class="dot bite-dot"
+        [ngStyle]="{ 'z-index': biteButtonOnTop ? 2 : 0}"
+        (click)="biteButton(false)">
+  Bite
+</button>
+
+<div class="brightmare-bottom-half center"
+     [@biteBottomHalf]="bite"
+     (click)="biteButton(true)">
+</div>

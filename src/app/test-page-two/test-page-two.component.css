@@ -1,0 +1,54 @@
+.title {
+  color: rebeccapurple;
+  /*line-height: 50rem;*/
+  font-size: 8rem;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.up-down-button {
+  top: 47.2%;
+  width: 150px;
+  height: 40px;
+  border: none;
+  background-color: rebeccapurple;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  -moz-transition: transform 0.2s;
+  -o-transition: transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  outline: 0;
+}
+
+.go-down-button {
+  background-color: rebeccapurple;
+  color: white;
+}
+
+.go-up-button {
+  background-color: white;
+  color: rebeccapurple;
+}
+
+.go-down-button:active {
+  transform: translate(-50%, -35%);
+}
+
+.go-up-button:active {
+  transform: translate(-50%, -65%);
+}
+
+.bottom-page {
+  height: 101%;
+  width: 100%;
+  top: 12%;
+  left: 0%;
+  position: absolute;
+  z-index: 1;
+  transform: translateY(100%);
+  background-color: rebeccapurple;
+}

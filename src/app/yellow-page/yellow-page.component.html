@@ -1,0 +1,9 @@
+<div [@openClose]="openClose ? 'open' : 'close'"
+     class="full-page"
+     style="background-color: yellow; transform: translateX(100%);"
+     (@openClose.done)="!openClose ? closeYellowPage.emit() : null">
+
+  <h1>Yellow Page</h1>
+
+  <button type="button" class="back-button" (click)="openClose = false">Go Back</button>
+</div>

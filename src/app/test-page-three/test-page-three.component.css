@@ -1,0 +1,34 @@
+.brightmare-top-half {
+  content: url(../../assets/BrightMareTopHalf.png);
+  top: 30%;
+  z-index: 1;
+}
+
+.brightmare-bottom-half {
+  content: url(../../assets/BrightMareBottomHalf.png);
+  top: 65%;
+}
+
+.brightmare-top-half, .brightmare-bottom-half {
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.bite-dot {
+  border: 9px solid lightblue;
+  background-color: deepskyblue;
+  top: 53%;
+  left: 50%;
+  color: white;
+  font-size: 2.2rem;
+  font-weight: bold;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  color: white;
+  font-size: 8rem;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}

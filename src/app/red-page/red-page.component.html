@@ -1,0 +1,6 @@
+<div class="top panel" [@topPanelOpenClose]="openClose ? 'open' : 'close'" (@topPanelOpenClose.done)="!openClose ? closeRedPage.emit() : null">
+  <h1>Red Page</h1>
+</div>
+<div class="bottom panel" [@bottomPanelOpenClose]="openClose ? 'open' : 'close'">
+  <button type="button" class="back-button" (click)="openClose = false">Go Back</button>
+</div>

@@ -1,0 +1,16 @@
+<div class="full-page">
+  <button *ngIf="showResetButton" type="button" class="button" (click)="reset()" style="margin: 10px 0 0 10px">
+    Reset
+  </button>
+
+  <div [@topLeftPanel]="isOpen ? 'open' : 'closed'" class="open-close-container"></div>
+  <div [@topRightPanel]="isOpen ? 'open' : 'closed'" class="open-close-container top-right"></div>
+  <div [@bottomLeftPanel]="isOpen ? 'open' : 'closed'" class="open-close-container"></div>
+  <div [@bottomRightPanel]="isOpen ? 'open' : 'closed'" class="open-close-container bottom-right"></div>
+
+  <button [@spinButton]="isOpen ? 'open' : 'closed'" type="button" class="enter-button" (click)="open()">
+    <p class="enter-text">
+      Enter
+    </p>
+  </button>
+</div>

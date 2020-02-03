@@ -1,0 +1,23 @@
+.fa-user {
+  font-size: 250px;
+}
+
+.user-accordion {
+  width: 750px;
+}
+
+.ui-accordion .ui-accordion-header {
+  margin-bottom: 20px !important;
+}
+
+.flex-box-test {
+  display: flex;
+  width: 100%;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70%;
+}

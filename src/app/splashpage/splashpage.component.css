@@ -1,0 +1,39 @@
+.open-close-container {
+  height: 50vh;
+  width: 50%;
+  opacity: 1;
+  background-color: lightblue;
+}
+
+.top-right {  
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.bottom-right {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+}
+
+.enter-button {
+  color: #ffffff;
+  background-color: green;
+  border: 1px solid green;
+  height: 130px;
+  width: 130px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -65px 0 0 -65px;
+  transform: rotate(45deg);
+  z-index: 9999;
+}
+
+.enter-text {
+  font-size: 32px;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  transform: rotate(-45deg);
+}

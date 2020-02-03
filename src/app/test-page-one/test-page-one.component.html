@@ -1,0 +1,49 @@
+<!-- TEMP Guide Lines -->
+<!--<div class="x-guide-line"></div>
+<div class="y-guide-line"></div>-->
+
+<div class="middle-dot center"
+     [ngStyle]="{ 'background-color': middleDotColor }"
+     [@growMiddleDot]="growDot ? 'grow' : 'shrink'">
+</div>
+
+<div class="circle">
+  <button class="dot water"
+          [@moveWaterDot]="moveDots"
+          (click)="changeMiddleDot('#15aabf', 'water')"
+          (mouseenter)="buttonHover(true, 'water')"
+          (mouseleave)="buttonHover(false)">
+    <i [@showContent]="showIcons ? 'show' : 'hide'" class="fas fa-tint"></i>
+  </button>
+  <button class="dot earth"
+          [@moveEarthDot]="moveDots"
+          (click)="changeMiddleDot('#82c91e', 'earth')"
+          (mouseenter)="buttonHover(true, 'earth')"
+          (mouseleave)="buttonHover(false)">
+    <i [@showContent]="showIcons ? 'show' : 'hide'" class="fas fa-leaf"></i>
+  </button>
+  <button class="dot fire"
+          [@moveFireDot]="moveDots"
+          (click)="changeMiddleDot('orangered', 'fire')"
+          (mouseenter)="buttonHover(true, 'fire')"
+          (mouseleave)="buttonHover(false)">
+    <i [@showContent]="showIcons ? 'show' : 'hide'" class="fas fa-fire"></i>
+  </button>
+  <button class="dot air"
+          [@moveAirDot]="moveDots"
+          (@moveAirDot.done)="showAllIcons()"
+          (click)="changeMiddleDot('slategray', 'air')"
+          (mouseenter)="buttonHover(true, 'air')"
+          (mouseleave)="buttonHover(false)">
+    <i [@showContent]="showIcons ? 'show' : 'hide'" class="fas fa-wind"></i>
+  </button>
+
+  <div class="element-text-container" [@showContent]="showElementText ? 'show' : 'hide'">
+    <h1 class="center-circle-message-open">{{middleDotOpenTitle}}</h1>
+    <p class="element-text">{{elementText}}</p>
+  </div>
+</div>
+
+<h1 class="center-circle-message-closed" [@showContent]="showmiddleDotClosedTitle ? 'show' : 'hide'">
+  {{middleDotClosedTitle}}
+</h1>

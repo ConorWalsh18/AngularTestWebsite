@@ -1,0 +1,49 @@
+<h1>Home Page</h1>
+
+<div class="circle">
+  <button class="dot yellow-dot"
+          [@moveYellowDot]="!moveDots ? 'start' : 'end'"          
+          (click)="showYellowPage()"
+          (mouseenter)="buttonHover(true, 'Yellow Page')"
+          (mouseleave)="buttonHover(false)">
+    <i [@showContent]="showIcons ? 'show' : 'hide'" class="fa fa-bolt"></i>
+  </button>
+  <button class="dot red-dot"
+          [@moveRedDot]="!moveDots ? 'start' : 'end'"
+          (click)="showRedPage = true"
+          (mouseenter)="buttonHover(true, 'Red Page')"
+          (mouseleave)="buttonHover(false)">
+    <i [@showContent]="showIcons ? 'show' : 'hide'" class="fas fa-fire"></i>
+  </button>
+  <button class="dot purple-dot"
+          [@movePurpleDot]="!moveDots ? 'start' : 'end'"          
+          (mouseenter)="buttonHover(true, 'Purple Page')"
+          (mouseleave)="buttonHover(false)">
+    <i [@showContent]="showIcons ? 'show' : 'hide'" class="fa fa-anchor"></i>
+  </button>
+  <button class="dot pink-dot"
+          [@movePinkDot]="!moveDots ? 'start' : 'end'"          
+          (@movePinkDot.done)="showAllIcons()"
+          (mouseenter)="buttonHover(true, 'Pink Page')"
+          (mouseleave)="buttonHover(false)">
+    <i [@showContent]="showIcons ? 'show' : 'hide'" class="fas fa-atom"></i>
+  </button>
+</div>
+
+<p [@showContent]="showIcons ? 'show' : 'hide'">
+  {{centerCircleMessage}}
+</p>
+
+<div [@goToGreenPage]="goToGreenPage ? 'animate' : null">
+  <button class="dot green-dot"
+          (click)="showGreenPage()"
+          (mouseenter)="buttonHover(true, 'Green Page')"
+          (mouseleave)="buttonHover(false)"
+          [ngStyle]="{ 'border': goToGreenPage ? 'none' : '7px solid white' }">
+    <i [@showContent]="showIcons ? 'show' : 'hide'" class="fa fa-user"></i>
+  </button>
+</div>
+
+<yellow-page *ngIf="goToYellowPage" (closeYellowPage)="goToYellowPage = false"></yellow-page>
+
+<red-page *ngIf="showRedPage" (closeRedPage)="showRedPage = false"></red-page>

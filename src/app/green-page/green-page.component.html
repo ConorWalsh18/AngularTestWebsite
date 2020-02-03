@@ -1,0 +1,23 @@
+<div *ngIf="shrinkPage" [@shrinkPage]="shrinkPage ? 'shrink' : 'normal'" class="full-page"style="background-color: limegreen"></div>
+
+<div *ngIf="!shrinkPage" class="full-page" style="background-color: limegreen">
+  <button type="button" class="back-button" (click)="reset()">Go Back</button>
+
+  <h1>Green Page</h1>
+
+  <div class="center flex-box-test">
+    <i [@moveUserIcon]="moveUserIcon ? 'move' : null" class="center fa fa-user"></i>
+
+    <div *ngIf="showContent" [@showContent]="showContent ? 'animate' : null" class="center card-container">
+      <p-card *ngFor="let card of userCards" header="{{card.header}}" subheader="{{card.subHeader}}">
+        <p-header>
+          <img src={{card.image}}>
+        </p-header>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque auctor faucibus ipsum ornare efficitur. Duis suscipit porttitor arcu, pretium blandit arcu tincidunt non. Phasellus placerat mattis ligula, et pellentesque nunc pellentesque gravida. Sed ipsum justo, porta in odio vel, dignissim scelerisque eros. Pellentesque vulputate risus quis dui interdum pretium vitae at nulla. Praesent sapien augue, pulvinar id rhoncus nec, volutpat pellentesque ligula. Praesent molestie vel purus eget aliquet. Sed ultrices lacus a justo interdum, at sollicitudin leo varius. Suspendisse convallis diam quis justo ultricies luctus a eget mauris. Proin a maximus leo. Donec fringilla ligula sed maximus tincidunt. Suspendisse pellentesque blandit ante. Suspendisse condimentum neque at sapien convallis convallis.
+        <br />
+        <br />
+        Duis auctor tempus neque. Maecenas in metus nunc. Suspendisse potenti. Phasellus bibendum libero vel sodales rhoncus. Cras lorem metus, scelerisque at lectus ac, finibus interdum ante. Donec elementum venenatis elementum. Pellentesque rhoncus magna at elit porttitor vulputate. Suspendisse sit amet lacus in mauris tempor lobortis id sed mauris. Phasellus cursus consectetur lorem ut rutrum. Integer bibendum tellus malesuada nisi sodales tincidunt. Mauris quis massa id sapien cursus malesuada egestas vitae leo. Morbi tincidunt id ligula quis tempus. Sed facilisis sodales maximus. Suspendisse blandit est metus, non tincidunt dolor imperdiet vitae. Curabitur bibendum lectus ut sapien egestas commodo.
+      </p-card>
+    </div>
+  </div>
+</div>
