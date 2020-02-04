@@ -52,3 +52,37 @@
   transform: translateY(100%);
   background-color: rebeccapurple;
 }
+
+.arrow {
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 40px solid black;
+  top: 51%;
+  z-index: 1;
+}
+
+.arrow-body {
+  height: 20px;
+  width: 20px;
+  transform: translate(-50%, -40%);
+  background-color: black;
+  z-index: 1;
+}
+
+.rotate-arrow-head {
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 40px solid black;
+  top: 144%;
+  z-index: 1;
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.rotate-arrow-body {
+  height: 20px;
+  width: 20px;
+  background-color: black;
+  z-index: 1;
+  transform: translate(-50%, -50%) rotate(180deg);
+  top: 145%;
+}

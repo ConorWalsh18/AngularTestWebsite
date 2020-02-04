@@ -6,3 +6,22 @@
   <h1 class="title" style="color: white;">Going Up</h1>
   <button class="center up-down-button go-up-button" (click)="traversePage('up')">Go Up</button>
 </div>
+
+<div *ngIf="moveArrow === 'goDown' || moveArrow === 'hideGoDown'">
+  <div class="center arrow"
+       [@moveArrow]="moveArrow">
+  </div>
+  <div class="center arrow-body"
+       [@moveArrowBody]="moveArrow">
+  </div>
+</div>
+
+
+<div *ngIf="moveArrow === 'goUp'">
+  <div class="center rotate-arrow-head"
+       [@moveArrow]="moveArrow">
+  </div>
+  <div class="center rotate-arrow-body"
+       [@moveArrowBody]="moveArrow">
+  </div>
+</div>
