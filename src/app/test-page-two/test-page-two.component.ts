@@ -22,7 +22,7 @@ import {
     ]),
     trigger('moveArrowBody', [
       state('goDown', style({ height: '1080px', transform: 'translate(-50%, 0%)' })),
-      state('goUp', style({ height: '1100px', top: '98%' })),
+      state('goUp', style({ height: '1080px', top: '98%' })),
       //state('hideGoDown', style({ height: '1080px', transform: 'translate(-50%, 0%)', opacity: 0 })),
       transition('* <=> *', [animate('0.6s ease-in-out')])
     ])

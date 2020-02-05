@@ -16,15 +16,15 @@ import {
       state('initial', style({ top: '30%' })),
       state('openMouth', style({ top: '27%' })),
       state('closeMouth', style({ top: '42%' })),
-      transition('initial => openMouth, closeMouth => initial', [animate('0.6s ease-in-out')]),
-      transition('openMouth => closeMouth', [animate('0.3s ease-in-out')])
+      transition('initial => openMouth, closeMouth => initial', [animate('0.4s ease-in-out')]),
+      transition('openMouth => closeMouth', [animate('0.2s ease-in-out')])
     ]),
     trigger('biteBottomHalf', [
       state('initial', style({ top: '65%' })),
       state('openMouth', style({ top: '68%' })),
       state('closeMouth', style({ top: '56%' })),
-      transition('initial => openMouth, closeMouth => initial', [animate('0.6s ease-in-out')]),
-      transition('openMouth => closeMouth', [animate('0.3s ease-in-out')])
+      transition('initial => openMouth, closeMouth => initial', [animate('0.4s ease-in-out')]),
+      transition('openMouth => closeMouth', [animate('0.2s ease-in-out')])
     ]),
   ]
 })
@@ -44,14 +44,14 @@ export class TestPageThreeComponent implements OnInit {
       this.bite = "initial";
       setTimeout(() => {
         this.biteButtonOnTop = true;
-      }, 600)
+      }, 400)
     }
     else {
       this.biteButtonOnTop = false;
       this.bite = "openMouth";
       setTimeout(() => {
         this.bite = "closeMouth"
-      }, 600)
+      }, 400)
     }
   }
 }

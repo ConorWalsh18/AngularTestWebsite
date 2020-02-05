@@ -1,6 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
@@ -36,6 +37,7 @@ import { TestPageThreeComponent } from './test-page-three/test-page-three.compon
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     DialogModule,
     TableModule,
