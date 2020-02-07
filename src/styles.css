@@ -151,41 +151,22 @@ button {
 }
 
 .button {
-  color: #ffffff;
-  background-color: green;
-  border: 1px solid green;
+  /*top: 47.2%;*/
+  width: 150px;
+  height: 40px;
+  border: none;
+  color: white;
   font-size: 20px;
-  -moz-transition: background-color 0.2s, box-shadow 0.2s;
-  -o-transition: background-color 0.2s, box-shadow 0.2s;
-  -webkit-transition: background-color 0.2s, box-shadow 0.2s;
-  transition: background-color 0.2s, box-shadow 0.2s;
-  border-radius: 3px;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
-  display: block;
-  margin: 0 auto;
+  font-weight: bold;
+  -moz-transition: transform 0.2s;
+  -o-transition: transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
+  outline: 0;
 }
 
-.back-button {
-  margin: 0px 5px 5px 0px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  color: #ffffff;
-  background-color: green;
-  border: 1px solid green;
-  font-size: 20px;
-  -moz-transition: background-color 0.2s, box-shadow 0.2s;
-  -o-transition: background-color 0.2s, box-shadow 0.2s;
-  -webkit-transition: background-color 0.2s, box-shadow 0.2s;
-  transition: background-color 0.2s, box-shadow 0.2s;
-  border-radius: 3px;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-.button:active, .back-button:active {
-  transform: translateY(2px);
+.button:active {
+  transform: translate(-50%, -35%);
 }
 
 h1 {

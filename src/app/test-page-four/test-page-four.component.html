@@ -1,0 +1,11 @@
+<h1 class="title">Notes</h1>
+
+<button class="center button new-note-button" (click)="newNote()">New Note</button>
+
+<div>
+  <button *ngFor="let note of notes"
+          class="center dot {{note.noteOrder}}"
+          [ngStyle]="{'border-color': note.borderColor, 'background': note.mainColor}">
+    <i class="{{note.icon}}"></i>
+  </button>
+</div>

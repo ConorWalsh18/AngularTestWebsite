@@ -7,8 +7,6 @@ import {
   transition
 } from '@angular/animations';
 import { Observable } from 'rxjs';
-import { ApiService } from '../api.service';
-import { Policy } from '../policy';
 
 @Component({
   selector: 'alternate-view',
@@ -22,15 +20,22 @@ export class AlternateViewComponent implements OnInit {
   testPageTwoState: string = "initial";
   testPageThreeState: string = "initial";
 
-  policies: Policy[];
-
-  constructor(private apiService: ApiService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.apiService.readPolicies().subscribe((policies: Policy[]) => {
-      this.policies = policies;
-      console.log(this.policies);
-    })
+    //var testPolicy = new Policy();
+    //testPolicy.id = 1;
+    //testPolicy.number = 100;
+    //testPolicy.amount = 1000;
+
+    //this.apiService.createPolicy(testPolicy).subscribe((policy: Policy)=>{
+    //  console.log("Policy created, ", policy);
+    //});
+
+    //this.apiService.readPolicies().subscribe((policies: Policy[]) => {
+    //  this.policies = policies;
+    //  console.log(this.policies);
+    //})
 
     window.scroll({
       top: 0

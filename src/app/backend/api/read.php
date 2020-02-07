@@ -1,25 +1,29 @@
 <?php
 
 /**
- * Returns the list of policies.
+ * Returns the list of notes
  */
+
 require 'database.php';
 
-$policies = [];
-$sql = "SELECT id, number, amount FROM policies";
+$notes = [];
+$sql = "SELECT id, borderColor, mainColor, note, noteOrder, icon FROM notes";
 
 if($result = mysqli_query($con,$sql))
 {
   $i = 0;
   while($row = mysqli_fetch_assoc($result))
   {
-    $policies[$i]['id']    = $row['id'];
-    $policies[$i]['number'] = $row['number'];
-    $policies[$i]['amount'] = $row['amount'];
+    $notes[$i]['id']    = $row['id'];
+    $notes[$i]['borderColor'] = $row['borderColor'];
+    $notes[$i]['mainColor'] = $row['mainColor'];
+    $notes[$i]['note'] = $row['note'];
+    $notes[$i]['noteOrder'] = $row['noteOrder'];
+    $notes[$i]['icon'] = $row['icon'];
     $i++;
   }
 
-  echo json_encode($policies);
+  echo json_encode($notes);
 }
 else
 {

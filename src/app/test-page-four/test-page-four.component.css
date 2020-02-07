@@ -1,0 +1,43 @@
+.title {
+  color: darkorange;
+  font-size: 8rem;  
+}
+
+.new-note-button {
+  background-color: darkorange;
+  top: 70%;
+}
+
+.position-one {
+  top: 27%;
+  left: 32%;
+}
+
+.position-two {
+  top: 27%;
+  left: 44%;
+}
+
+.position-three {
+  top: 27%;
+  left: 56%;
+}
+
+.position-four {
+  top: 27%;
+  left: 68%;
+}
+
+.position-five {
+  top: 44%;
+  left: 32%;
+}
+
+.position-six {
+  top: 44%;
+  left: 44%;
+}
+
+.fa, .fab, .fas {
+  font-size: 65px;
+}

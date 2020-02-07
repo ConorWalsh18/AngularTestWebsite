@@ -20,6 +20,7 @@ import { AlternateViewComponent } from './alternate-view/alternate-view.componen
 import { TestPageOneComponent } from './test-page-one/test-page-one.component';
 import { TestPageTwoComponent } from './test-page-two/test-page-two.component';
 import { TestPageThreeComponent } from './test-page-three/test-page-three.component';
+import { TestPageFourComponent } from './test-page-four/test-page-four.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TestPageThreeComponent } from './test-page-three/test-page-three.compon
     AlternateViewComponent,
     TestPageOneComponent,
     TestPageTwoComponent,
-    TestPageThreeComponent
+    TestPageThreeComponent,
+    TestPageFourComponent
   ],
   imports: [
     BrowserModule,
