@@ -1,7 +1,7 @@
 .header {
   background-color: deepskyblue;
   position: fixed;
-  height: 12%;
+  height: 7%;
   top: 0;
   bottom: 0;
   left: 0;
@@ -15,7 +15,7 @@
   display: inline-block;
   text-transform: uppercase;
   font-weight: bold;
-  margin: 25px 0px 0px 45px;
+  margin: -4px 0px 0px 45px;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
@@ -23,7 +23,7 @@
 .menu-list {
   list-style-type: none;
   float: right;
-  margin-top: 45px;
+  margin-top: 15px;
   display: inline-block;
   height: 100%;
 }
@@ -47,14 +47,14 @@
   text-transform: uppercase;
 }
 
-.menu-list li:hover, .title:hover {
+.title:hover, .menu-list li:hover {
   color: #4a4f52;
 }
 
 .test-page {
-  height: 88%;
+  height: 93%;
   width: 100%;
-  top: 12%;
+  top: 7%;
   left: 0%;
   position: absolute;
   z-index: 1;

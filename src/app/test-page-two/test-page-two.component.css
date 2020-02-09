@@ -43,9 +43,9 @@
 }
 
 .bottom-page {
-  height: 101%;
+  height: 100%;
   width: 100%;
-  top: 12%;
+  top: 7%;
   left: 0%;
   position: absolute;
   z-index: 1;
@@ -73,7 +73,7 @@
   border-left: 40px solid transparent;
   border-right: 40px solid transparent;
   border-top: 40px solid black;
-  top: 144%;
+  top: 138%;
   z-index: 1;
   transform: translate(-50%, -50%) rotate(180deg);
 }
@@ -84,5 +84,5 @@
   background-color: black;
   z-index: 1;
   transform: translate(-50%, -50%) rotate(180deg);
-  top: 145%;
+  top: 138%;
 }

@@ -1,11 +1,55 @@
 .title {
   color: darkorange;
-  font-size: 8rem;  
+  font-size: 8rem;
 }
 
 .new-note-button {
   background-color: darkorange;
-  top: 70%;
+  top: 60%;
+  width: 175px;
+  height: 50px;
+  font-size: 25px;
+  z-index: 1;
+}
+
+.dot:hover {
+  transform: translate(-50%, -50%) scale(1.3);
+  z-index: 1;
+}
+
+.note-title {
+  opacity: 0;
+  color: darkorange;
+  font-size: 4rem;
+  font-weight: 600;
+  top: 54%
+}
+
+.note-title-icon {
+  font-size: 55px;
+  margin-top: -15px;
+  margin-left: 18px;
+  position: absolute;
+}
+
+.note-container {
+  opacity: 0;
+  top: 73%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border: 5px solid darkorange;
+  width: 50%;
+  height: 23%;
+  overflow: auto;
+}
+
+.note-text {
+  top: 65%;
+  line-height: 2rem;
+  font-size: 2rem;
+  margin: 20px;
+  text-align: justify;
 }
 
 .position-one {
@@ -38,6 +82,16 @@
   left: 44%;
 }
 
-.fa, .fab, .fas {
+.position-seven {
+  top: 44%;
+  left: 56%;
+}
+
+.position-eight {
+  top: 44%;
+  left: 68%;
+}
+
+button .fa, button .fab, button .fas {
   font-size: 65px;
 }

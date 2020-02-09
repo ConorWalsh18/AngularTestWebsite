@@ -1,11 +1,24 @@
 <h1 class="title">Notes</h1>
 
-<button class="center button new-note-button" (click)="newNote()">New Note</button>
+<button class="center button new-note-button"
+        [@moveNoteButton]="moveNoteButton ? 'moveDown' : 'moveUp'"
+        (click)="newNote()">
+        New Note
+</button>
 
 <div>
   <button *ngFor="let note of notes"
           class="center dot {{note.noteOrder}}"
-          [ngStyle]="{'border-color': note.borderColor, 'background': note.mainColor}">
+          [ngStyle]="{'border-color': note.borderColor, 'background': note.mainColor}"
+          (click)="showNote(note)">
     <i class="{{note.icon}}"></i>
   </button>
+</div>
+
+<h1 class="center note-title" [@showContent]="showNoteSection ? 'show' : 'hide'">
+  {{selectedNote.noteTitle}}
+  <i class="note-title-icon {{selectedNote.icon}}"></i>
+</h1>
+<div class="note-container" [@showContent]="showNoteSection ? 'show' : 'hide'">
+  <p class="note-text">{{selectedNote.note}}</p>
 </div>

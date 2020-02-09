@@ -151,7 +151,6 @@ button {
 }
 
 .button {
-  /*top: 47.2%;*/
   width: 150px;
   height: 40px;
   border: none;
@@ -195,6 +194,10 @@ p {
   border-radius: 50%;
   display: inline-block;
   background-color: white;
+  -moz-transition: transform 0.2s;
+  -o-transition: transform 0.2s;
+  -webkit-transition: transform 0.2s;
+  transition: transform 0.2s;
 }
 
 /* Center List */

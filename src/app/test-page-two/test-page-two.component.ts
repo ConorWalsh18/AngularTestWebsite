@@ -15,14 +15,14 @@ import {
   styleUrls: ['./test-page-two.component.css'],
   animations: [ 
     trigger('moveArrow', [
-      state('goDown', style({ top: '144%' })),
+      state('goDown', style({ top: '138%' })),
       state('goUp', style({ top: '51%' })),
       //state('hideGoDown', style({ top: '144%', opacity: 0})),
       transition('* <=> *', [animate('0.6s ease-in-out')])
     ]),
     trigger('moveArrowBody', [
-      state('goDown', style({ height: '1080px', transform: 'translate(-50%, 0%)' })),
-      state('goUp', style({ height: '1080px', top: '98%' })),
+      state('goDown', style({ height: '88%', transform: 'translate(-50%, 0%)' })),
+      state('goUp', style({ height: '89%', top: '95%' })),
       //state('hideGoDown', style({ height: '1080px', transform: 'translate(-50%, 0%)', opacity: 0 })),
       transition('* <=> *', [animate('0.6s ease-in-out')])
     ])
