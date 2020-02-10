@@ -52,6 +52,63 @@
   text-align: justify;
 }
 
+.button-container {
+  width: 35%;
+  height: 25%;
+  top: 32%;
+  left: 50%
+}
+
+/*.position-one {
+  top: 3%;
+  left: 3%;
+}
+
+.position-two {
+  top: 3%;
+  left: 23%;
+}
+
+.position-three {
+  top: 3%;
+  left: 43%;
+}
+
+.position-four {
+  top: 3%;
+  left: 63%;
+}
+
+.position-five {
+  top: 3%;
+  left: 83%;
+}
+
+.position-six {
+  top: 60%;
+  left: 3%;
+}
+
+.position-seven {
+  top: 60%;
+  left: 23%;
+}
+
+.position-eight {
+  top: 60%;
+  left: 43%;
+}
+
+.position-nine {
+  top: 60%;
+  left: 63%;
+}
+
+.position-ten {
+  top: 60%;
+  left: 83%;
+}*/
+
 .position-one {
   top: 27%;
   left: 32%;

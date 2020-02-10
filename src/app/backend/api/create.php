@@ -10,7 +10,6 @@ if(isset($postdata) && !empty($postdata))
   //Extract the data
   $request = json_decode($postdata);
 
-
   //Validate
   //if(trim($request->number) === '' || (float)$request->amount < 0)
   //{
@@ -20,13 +19,15 @@ if(isset($postdata) && !empty($postdata))
   //Sanitize
   $borderColor = mysqli_real_escape_string($con, (string)$request->borderColor);
   $mainColor = mysqli_real_escape_string($con, (string)$request->mainColor);
+  $noteTitle = mysqli_real_escape_string($con, (string)$request->noteTitle);
   $note = mysqli_real_escape_string($con, (string)$request->note);
   $noteOrder = mysqli_real_escape_string($con, (string)$request->noteOrder);
   $icon = mysqli_real_escape_string($con, (string)$request->icon);
+  $iconColor = mysqli_real_escape_string($con, (string)$request->iconColor);
 
   //Create
-  $sql = "INSERT INTO `notes`(`id`,`borderColor`,`mainColor`,`note`,`noteOrder`, `icon`)
-          VALUES (null,'{$borderColor}','{$mainColor}','{$note}','{$noteOrder}', '{$icon}')";
+  $sql = "INSERT INTO `notes`(`id`, `borderColor`, `mainColor`, `noteTitle`, `note`, `noteOrder`, `icon`, `iconColor`)
+          VALUES (null, '{$borderColor}', '{$mainColor}', '{$noteTitle}', '{$note}', '{$noteOrder}', '{$icon}', '{$iconColor}')";
 
   if(mysqli_query($con,$sql))
   {
@@ -34,9 +35,11 @@ if(isset($postdata) && !empty($postdata))
     $newNote = [
       'borderColor' => $borderColor,
       'mainColor' => $mainColor,
+      'noteTitle' => $noteTitle,
       'note' => $note,
       'noteOrder' => $noteOrder,
       'icon' => $icon,
+      'iconColor' => $iconColor,
       'id'    => mysqli_insert_id($con)
     ];
     echo json_encode($newNote);

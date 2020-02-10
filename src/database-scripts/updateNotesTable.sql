@@ -1,4 +1,4 @@
-SELECT id, borderColor, mainColor, note, noteOrder, icon FROM notes;
+SELECT * FROM notes;
 
 -- update notes
 -- set icon = 'fas fa-anchor'

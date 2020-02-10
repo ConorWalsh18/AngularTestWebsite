@@ -15,10 +15,22 @@
   </button>
 </div>
 
-<h1 class="center note-title" [@showContent]="showNoteSection ? 'show' : 'hide'">
-  {{selectedNote.noteTitle}}
-  <i class="note-title-icon {{selectedNote.icon}}"></i>
-</h1>
-<div class="note-container" [@showContent]="showNoteSection ? 'show' : 'hide'">
-  <p class="note-text">{{selectedNote.note}}</p>
+<!-- TEMP -->
+<!--<div class="center button-container">
+  <button *ngFor="let note of notes"
+          class="dot {{note.noteOrder}}"
+          [ngStyle]="{'border-color': note.borderColor, 'background': note.mainColor}"
+          (click)="showNote(note)">
+    <i class="{{note.icon}}"></i>
+  </button>
+</div>-->
+
+<div *ngIf="selectedNote">
+  <h1 class="center note-title" [@showContent]="showNoteSection ? 'show' : 'hide'">
+    {{selectedNote.noteTitle}}
+    <i class="note-title-icon {{selectedNote.icon}}"></i>
+  </h1>
+  <div class="note-container" [@showContent]="showNoteSection ? 'show' : 'hide'">
+    <p class="note-text">{{selectedNote.note}}</p>
+  </div>
 </div>
