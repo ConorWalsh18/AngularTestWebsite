@@ -83,55 +83,62 @@
   flex-direction: row;
 }
 
-/*.position-one {
+.position-container {
+  top: 32%;
+  left: 50%;
+  height: 30%;
+  width: 50%;
+}
+
+.position1 {
   top: 3%;
   left: 3%;
 }
 
-.position-two {
+.position2 {
   top: 3%;
   left: 23%;
 }
 
-.position-three {
+.position3 {
   top: 3%;
   left: 43%;
 }
 
-.position-four {
+.position4 {
   top: 3%;
   left: 63%;
 }
 
-.position-five {
+.position5 {
   top: 3%;
   left: 83%;
 }
 
-.position-six {
+.position6 {
   top: 60%;
   left: 3%;
 }
 
-.position-seven {
+.position7 {
   top: 60%;
   left: 23%;
 }
 
-.position-eight {
+.position8 {
   top: 60%;
   left: 43%;
 }
 
-.position-nine {
+.position9 {
   top: 60%;
   left: 63%;
 }
 
-.position-ten {
+.position10 {
   top: 60%;
   left: 83%;
-}*/
+}
 
 /*.position-one {
   top: 27%;

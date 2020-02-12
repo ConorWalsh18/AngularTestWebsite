@@ -57,8 +57,10 @@ export class TestPageFourComponent implements OnInit {
 
     this.apiService.readPolicies().subscribe((notes: Note[]) => {
       this.notes = notes;
-      console.log(this.notes);
+      //console.log(this.notes);
+      //console.log("sorted = ", this.notes.sort());      
     });
+
 
     this.iconOptions = [
       { label: 'Anchor', value: 'fas fa-anchor' },
@@ -74,24 +76,10 @@ export class TestPageFourComponent implements OnInit {
       { label: 'Position 5', value: '5' },
       { label: 'Position 6', value: '6' },
       { label: 'Position 7', value: '7' },
-      { label: 'Position 8', value: '8' }
+      { label: 'Position 8', value: '8' },
+      { label: 'Position 9', value: '9' },
+      { label: 'Position 10', value: '10' }
     ];
-  }
-
-  newNote() {
-    this.noteFormModel = new Note(null, "black", "white", null, "Enter your note here", null, "fas fa-question", "black");
-    this.showNoteModal = true;
-  }
-
-  createNote() {
-    console.log("Note form model = , ", this.noteFormModel);
-
-    this.apiService.createNote(this.noteFormModel).subscribe((note: Note) => {
-      console.log("Note created, ", note);
-      this.notes.push(note);
-    });
-
-    this.showNoteModal = false;
   }
 
   showNote(note: Note) {
@@ -109,6 +97,57 @@ export class TestPageFourComponent implements OnInit {
       setTimeout(() => {
         this.showNoteSection = true;
       }, 200)    
+    }
+  }
+
+  newNote() {
+    this.noteFormModel = new Note(null, "black", "white", null, "Enter your note here", null, "fas fa-question", "black");
+    this.showNoteModal = true;
+  }
+
+  createNote() {
+    console.log("Note form model = , ", this.noteFormModel);
+
+    this.apiService.createNote(this.noteFormModel).subscribe((note: Note) => {
+      this.notes.push(note);
+    });
+
+    this.showNoteModal = false;
+  }
+
+  changeNoteOrder(noteOrder: any) {
+    this.noteFormModel.noteOrder = noteOrder;
+
+    var existingNotePositions = [];
+    var nextAvailablePosition;
+    var existingNoteOrderIndex;
+
+    for (var i = 0; i < this.notes.length; i++) {
+      existingNotePositions.push(Number(this.notes[i].noteOrder));
+    }
+
+    existingNotePositions = existingNotePositions.sort((n1, n2) => n1 - n2);
+    existingNoteOrderIndex = this.notes.findIndex(item => item.noteOrder === noteOrder.toString());
+
+    if (existingNoteOrderIndex != -1) {
+      for (var i = 0; i < existingNotePositions.length; i++) {
+        if (existingNotePositions[i] - i != 1) {
+          //TODO: Make this into its own method and call it from here and below
+          nextAvailablePosition = i + 1;
+          existingNoteOrderIndex = this.notes.findIndex(item => item.noteOrder === noteOrder.toString());
+          this.notes[existingNoteOrderIndex].noteOrder = nextAvailablePosition.toString();
+          break;
+        }
+        else if (existingNotePositions.length - 1 === i) {
+          nextAvailablePosition = existingNotePositions.length + 1;
+          existingNoteOrderIndex = this.notes.findIndex(item => item.noteOrder === noteOrder.toString());
+          this.notes[existingNoteOrderIndex].noteOrder = nextAvailablePosition.toString();
+        }
+      }
+
+      this.apiService.updateNote(this.notes[existingNoteOrderIndex]).subscribe((note: Note) => {
+        console.log(note);
+      });
     }
   }
 }

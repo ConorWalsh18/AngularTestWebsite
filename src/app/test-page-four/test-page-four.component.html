@@ -1,25 +1,16 @@
 <h1 class="title">Notes</h1>
 
-<!--<div>
-  <button *ngFor="let note of notes"
-          class="center dot {{note.noteOrder}}"
-          [ngStyle]="{'border-color': note.borderColor, 'background': note.mainColor}"
-          (click)="showNote(note)">
-    <i class="{{note.icon}}" [ngStyle]="{'color': note.iconColor}"></i>
-  </button>
-</div>-->
-
 <!-- TEMP -->
-<!--<div class="center button-container" style="border: 5px solid black;">
+<div class="center position-container" style="border: 5px solid black;">
   <button *ngFor="let note of notes"
-          class="dot child"
+          class="dot position{{note.noteOrder}}"
           [ngStyle]="{'border-color': note.borderColor, 'background': note.mainColor}"
           (click)="showNote(note)">
     <i class="{{note.icon}}" [ngStyle]="{'color': note.iconColor}"></i>
   </button>
-</div>-->
+</div>
 
-<div class="button-container">
+<!--<div class="button-container">
   <div class="note-dot-aligner">
     <button *ngFor="let note of notes"
             class="note-dot"
@@ -28,7 +19,7 @@
       <i class="{{note.icon}}" [ngStyle]="{'color': note.iconColor}"></i>
     </button>
   </div>
-</div>
+</div>-->
 
 <div *ngIf="selectedNote">
   <h1 class="center note-title" [@showContent]="showNoteSection ? 'show' : 'hide'">
@@ -120,7 +111,7 @@
             <p-dropdown [options]="noteOrderOptions"
                         [(ngModel)]="noteFormModel.noteOrder"
                         placeholder="Select a Note Order"
-                        (onChange)="noteFormModel.noteOrder = $event.value">
+                        (onChange)="changeNoteOrder($event.value)">
             </p-dropdown>
           </div>
         </div>
