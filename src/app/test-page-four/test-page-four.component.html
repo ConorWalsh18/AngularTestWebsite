@@ -1,29 +1,34 @@
 <h1 class="title">Notes</h1>
 
-<button class="center button new-note-button"
-        [@moveNoteButton]="moveNoteButton ? 'moveDown' : 'moveUp'"
-        (click)="newNote()">
-        New Note
-</button>
-
-<div>
+<!--<div>
   <button *ngFor="let note of notes"
           class="center dot {{note.noteOrder}}"
           [ngStyle]="{'border-color': note.borderColor, 'background': note.mainColor}"
           (click)="showNote(note)">
-    <i class="{{note.icon}}"></i>
-  </button>
-</div>
-
-<!-- TEMP -->
-<!--<div class="center button-container">
-  <button *ngFor="let note of notes"
-          class="dot {{note.noteOrder}}"
-          [ngStyle]="{'border-color': note.borderColor, 'background': note.mainColor}"
-          (click)="showNote(note)">
-    <i class="{{note.icon}}"></i>
+    <i class="{{note.icon}}" [ngStyle]="{'color': note.iconColor}"></i>
   </button>
 </div>-->
+
+<!-- TEMP -->
+<!--<div class="center button-container" style="border: 5px solid black;">
+  <button *ngFor="let note of notes"
+          class="dot child"
+          [ngStyle]="{'border-color': note.borderColor, 'background': note.mainColor}"
+          (click)="showNote(note)">
+    <i class="{{note.icon}}" [ngStyle]="{'color': note.iconColor}"></i>
+  </button>
+</div>-->
+
+<div class="button-container">
+  <div class="note-dot-aligner">
+    <button *ngFor="let note of notes"
+            class="note-dot"
+            [ngStyle]="{'border-color': note.borderColor, 'background': note.mainColor, 'order': note.noteOrder}"
+            (click)="showNote(note)">
+      <i class="{{note.icon}}" [ngStyle]="{'color': note.iconColor}"></i>
+    </button>
+  </div>
+</div>
 
 <div *ngIf="selectedNote">
   <h1 class="center note-title" [@showContent]="showNoteSection ? 'show' : 'hide'">
@@ -34,3 +39,105 @@
     <p class="note-text">{{selectedNote.note}}</p>
   </div>
 </div>
+
+<button class="center button new-note-button"
+        [@moveNoteButton]="moveNoteButton ? 'moveDown' : 'moveUp'"
+        (click)="newNote()">
+  New Note
+</button>
+
+<p-dialog *ngIf="showNoteModal" header="Temp New Note Title" [(visible)]="showNoteModal" modal="modal" appendTo="body">
+  <div class="modalbody">
+    <div class="form-td">
+      <div class="form-table">
+        <div class="form-tr">
+          <div class="form-td">
+            <button class="modal-dot" [ngStyle]="{'border-color': noteFormModel.borderColor, 'background': noteFormModel.mainColor}">
+              <i class="{{noteFormModel.icon}}" [ngStyle]="{'color': noteFormModel.iconColor}"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-td">
+      <form>
+        <div class="form-table" style="margin-top: 35px;">
+          <div class="form-tr">
+            <label class="form-td" style="padding-bottom: 23px;">Border Color:</label>
+            <div class="form-td">
+              <input readonly
+                     class="color-picker"
+                     [(colorPicker)]="noteFormModel.borderColor"
+                     [style.background]="noteFormModel.borderColor" />
+            </div>
+          </div>
+          <div class="form-tr">
+            <label class="form-td" style="padding-bottom: 23px;">Main Color:</label>
+            <div class="form-td">
+              <input readonly
+                     class="color-picker"
+                     [(colorPicker)]="noteFormModel.mainColor"
+                     [style.background]="noteFormModel.mainColor" />
+            </div>
+          </div>
+          <div class="form-tr">
+            <label class="form-td">Icon Color:</label>
+            <div class="form-td">
+              <input readonly
+                     class="color-picker"
+                     [(colorPicker)]="noteFormModel.iconColor"
+                     [style.background]="noteFormModel.iconColor" />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="form-td">
+      <div class="form-table" style="margin-left: 15px; margin-top: 29px;">
+        <div class="form-tr">
+          <label class="form-td">Icon:</label>
+          <div class="form-td">
+            <p-dropdown [options]="iconOptions"
+                        [(ngModel)]="noteFormModel.icon"
+                        placeholder="Select an Icon"
+                        (onChange)="noteFormModel.icon = $event.value">
+              <ng-template let-icon pTemplate="selectedItem">
+                <i class="{{icon.value}} selected-icon-dropdown-item"></i>
+                <span class="selected-icon-text-dropdown-item">{{icon.label}}</span>
+              </ng-template>
+              <ng-template let-icon pTemplate="item">
+                <div class="ui-helper-clearfix" style="position: relative; height: 25px;">
+                  <i class="{{icon.value}} icon-dropdown-item"></i>
+                  <div class="icon-text-dropdown-item">{{icon.label}}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="form-tr">
+          <label class="form-td">Note Order:</label>
+          <div class="form-td">
+            <p-dropdown [options]="noteOrderOptions"
+                        [(ngModel)]="noteFormModel.noteOrder"
+                        placeholder="Select a Note Order"
+                        (onChange)="noteFormModel.noteOrder = $event.value">
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="form-tr">
+          <label class="form-td">Note Title:</label>
+          <div class="form-td">
+            <input type="text" pInputText [(ngModel)]="noteFormModel.noteTitle" style="height: 31px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="note-cell">
+    <textarea pInputTextarea [(ngModel)]="noteFormModel.note"></textarea>
+  </div>
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="createNote()" label="Create"></button>
+    <button type="button" pButton icon="pi pi-times" (click)="showNoteModal = false" label="Cancel" class="ui-button-secondary"></button>
+  </p-footer>
+</p-dialog>

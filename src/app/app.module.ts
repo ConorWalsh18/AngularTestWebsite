@@ -2,12 +2,15 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { DialogModule } from 'primeng/dialog';
 import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
 import { AccordionModule } from 'primeng/accordion';
 import { CardModule } from 'primeng/card';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +24,8 @@ import { TestPageOneComponent } from './test-page-one/test-page-one.component';
 import { TestPageTwoComponent } from './test-page-two/test-page-two.component';
 import { TestPageThreeComponent } from './test-page-three/test-page-three.component';
 import { TestPageFourComponent } from './test-page-four/test-page-four.component';
+
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -40,12 +45,16 @@ import { TestPageFourComponent } from './test-page-four/test-page-four.component
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
     DialogModule,
     TableModule,
     CalendarModule,
     AccordionModule,
-    CardModule
+    CardModule,
+    ColorPickerModule,
+    DropdownModule,
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent],

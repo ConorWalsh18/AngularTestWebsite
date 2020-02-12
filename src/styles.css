@@ -200,6 +200,10 @@ p {
   transition: transform 0.2s;
 }
 
+.ui-dialog .ui-dialog-content {
+  overflow: visible !important;
+}
+
 /* Center List */
 /*.menu-table {*/
   /*display: table;*/ /* Allow the centering to work */
