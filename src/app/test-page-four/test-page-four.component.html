@@ -1,6 +1,6 @@
 <h1 class="title">Notes</h1>
 
-<!-- TEMP -->
+<!-- Fixed Positions -->
 <div class="center position-container" style="border: 5px solid black;">
   <button *ngFor="let note of notes"
           class="dot position{{note.noteOrder}}"
@@ -10,6 +10,7 @@
   </button>
 </div>
 
+<!-- Flexbox Container -->
 <!--<div class="button-container">
   <div class="note-dot-aligner">
     <button *ngFor="let note of notes"
@@ -21,6 +22,7 @@
   </div>
 </div>-->
 
+<!-- Display Note Section -->
 <div *ngIf="selectedNote">
   <h1 class="center note-title" [@showContent]="showNoteSection ? 'show' : 'hide'">
     {{selectedNote.noteTitle}}
@@ -31,13 +33,23 @@
   </div>
 </div>
 
-<button class="center button new-note-button"
-        [@moveNoteButton]="moveNoteButton ? 'moveDown' : 'moveUp'"
-        (click)="newNote()">
-  New Note
-</button>
+<!-- Buttons -->
+<div class="center">
+  <button class="button action-button"
+          [@moveNoteButton]="moveNoteButton ? 'moveDown' : 'moveUp'"
+          (click)="newNote()">
+    New Note
+  </button>
+  <button class="button action-button" [disabled]="!selectedNote" (click)="editNote()">
+    Edit Note
+  </button>
+  <button class="button action-button" [disabled]="!selectedNote" (click)="deleteNote(selectedNote.id)">
+    Delete Note
+  </button>
+</div>
 
-<p-dialog *ngIf="showNoteModal" header="Temp New Note Title" [(visible)]="showNoteModal" modal="modal" appendTo="body">
+<!-- Note Modal -->
+<p-dialog *ngIf="showNoteModal" header="{{modalAction}} Note" [(visible)]="showNoteModal" modal="modal" appendTo="body">
   <div class="modalbody">
     <div class="form-td">
       <div class="form-table">
@@ -84,7 +96,7 @@
       </form>
     </div>
     <div class="form-td">
-      <div class="form-table" style="margin-left: 15px; margin-top: 29px;">
+      <div class="form-table" style="margin-left: 15px; margin-top: 31px;">
         <div class="form-tr">
           <label class="form-td">Icon:</label>
           <div class="form-td">
@@ -111,7 +123,7 @@
             <p-dropdown [options]="noteOrderOptions"
                         [(ngModel)]="noteFormModel.noteOrder"
                         placeholder="Select a Note Order"
-                        (onChange)="changeNoteOrder($event.value)">
+                        (onChange)="noteFormModel.noteOrder = $event.value">
             </p-dropdown>
           </div>
         </div>
@@ -125,7 +137,7 @@
     </div>
   </div>
   <div class="note-cell">
-    <textarea pInputTextarea [(ngModel)]="noteFormModel.note"></textarea>
+    <textarea pInputTextarea [(ngModel)]="noteFormModel.note" placeholder="Enter your note here"></textarea>
   </div>
   <p-footer>
     <button type="button" pButton icon="pi pi-check" (click)="createNote()" label="Create"></button>

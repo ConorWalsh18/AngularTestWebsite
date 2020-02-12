@@ -39,6 +39,7 @@ export class TestPageFourComponent implements OnInit {
   selectedNote: Note;
   noteFormModel: Note;
   showNoteModal: boolean = false;
+  modalAction: string;
   iconOptions: SelectItem[] = [];
   noteOrderOptions: SelectItem[] = [];
 
@@ -55,12 +56,7 @@ export class TestPageFourComponent implements OnInit {
     //this.mockNotes.push(new Note(7, "deeppink", "pink", "Note 7", "Test note 7", "position-seven", "fas fa-heart", "black"));
     //this.mockNotes.push(new Note(8, "burlywood", "antiquewhite", "Note 8", "Test note 8", "position-eight", "fas fa-ghost", "black"));
 
-    this.apiService.readPolicies().subscribe((notes: Note[]) => {
-      this.notes = notes;
-      //console.log(this.notes);
-      //console.log("sorted = ", this.notes.sort());      
-    });
-
+    this.getNotes();
 
     this.iconOptions = [
       { label: 'Anchor', value: 'fas fa-anchor' },
@@ -83,13 +79,11 @@ export class TestPageFourComponent implements OnInit {
   }
 
   showNote(note: Note) {
+    //Close note section
     if (this.moveNoteButton && this.selectedNote === note) {
-      this.showNoteSection = false;
-
-      setTimeout(() => {
-        this.moveNoteButton = false;
-      }, 100)
+      this.closeNoteSection();
     }
+    //Open note section
     else {
       this.selectedNote = note;
       this.moveNoteButton = true;
@@ -100,26 +94,65 @@ export class TestPageFourComponent implements OnInit {
     }
   }
 
+  closeNoteSection() {
+    this.showNoteSection = false;
+
+    setTimeout(() => {
+      this.moveNoteButton = false;
+      this.selectedNote = null;
+    }, 100)
+  }
+
   newNote() {
-    this.noteFormModel = new Note(null, "black", "white", null, "Enter your note here", null, "fas fa-question", "black");
+    this.modalAction = "New";
+    this.noteFormModel = new Note(null, "black", "white", null, null, null, "fas fa-question", "black");
+    this.closeNoteSection();
+    this.showNoteModal = true;
+  }
+
+  editNote() {
+    this.modalAction = "Edit";
+    this.noteFormModel = this.selectedNote;
+    this.closeNoteSection();
     this.showNoteModal = true;
   }
 
   createNote() {
     console.log("Note form model = , ", this.noteFormModel);
 
-    this.apiService.createNote(this.noteFormModel).subscribe((note: Note) => {
-      this.notes.push(note);
-    });
+    //TODO: Maybe add a dialog asking if the user wants to change the note order of the existing note to the next available spot
+    this.checkExistingNoteOrder(this.noteFormModel.noteOrder);
+
+    if (this.modalAction === "New") {
+      this.apiService.createNote(this.noteFormModel).subscribe((note: Note) => {
+        this.notes.push(note);
+      });
+    }
+    else {
+      this.apiService.updateNote(this.noteFormModel).subscribe((note: Note) => {
+        console.log(note);
+      });
+    }
 
     this.showNoteModal = false;
   }
 
-  changeNoteOrder(noteOrder: any) {
-    this.noteFormModel.noteOrder = noteOrder;
+  getNotes() {
+    this.apiService.readPolicies().subscribe((notes: Note[]) => {
+      this.notes = notes;
+    });
+  }
 
+  deleteNote(id: number) {
+    this.closeNoteSection();
+
+    this.apiService.deleteNote(id).subscribe((note: Note) => {
+      this.getNotes();
+    });;
+  }
+
+  checkExistingNoteOrder(noteOrder: any) {
     var existingNotePositions = [];
-    var nextAvailablePosition;
     var existingNoteOrderIndex;
 
     for (var i = 0; i < this.notes.length; i++) {
@@ -132,16 +165,11 @@ export class TestPageFourComponent implements OnInit {
     if (existingNoteOrderIndex != -1) {
       for (var i = 0; i < existingNotePositions.length; i++) {
         if (existingNotePositions[i] - i != 1) {
-          //TODO: Make this into its own method and call it from here and below
-          nextAvailablePosition = i + 1;
-          existingNoteOrderIndex = this.notes.findIndex(item => item.noteOrder === noteOrder.toString());
-          this.notes[existingNoteOrderIndex].noteOrder = nextAvailablePosition.toString();
+          this.changeExistingNoteOrder(noteOrder, existingNoteOrderIndex, i);
           break;
         }
         else if (existingNotePositions.length - 1 === i) {
-          nextAvailablePosition = existingNotePositions.length + 1;
-          existingNoteOrderIndex = this.notes.findIndex(item => item.noteOrder === noteOrder.toString());
-          this.notes[existingNoteOrderIndex].noteOrder = nextAvailablePosition.toString();
+          this.changeExistingNoteOrder(noteOrder, existingNoteOrderIndex, i + 1);
         }
       }
 
@@ -149,5 +177,12 @@ export class TestPageFourComponent implements OnInit {
         console.log(note);
       });
     }
+  }
+
+  changeExistingNoteOrder(noteOrder: any, existingNoteOrderIndex: any, i: number) {
+    var nextAvailablePosition;
+    nextAvailablePosition = i + 1;
+    existingNoteOrderIndex = this.notes.findIndex(item => item.noteOrder === noteOrder.toString());
+    this.notes[existingNoteOrderIndex].noteOrder = nextAvailablePosition.toString();
   }
 }
