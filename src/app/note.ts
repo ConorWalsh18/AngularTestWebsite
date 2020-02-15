@@ -18,4 +18,22 @@ export class Note {
     this.icon = icon;
     this.iconColor = iconColor;
   }
+
+  public Validate() {
+    var errorMessages = [];
+
+    if (this.icon == null || this.icon.length < 1) {
+      errorMessages.push({severity:'error', summary:'Validation Error', detail:'An Icon must be selected', missingField:"icon"});
+    }
+    
+    if (this.noteOrder == null || this.noteOrder.length < 1) {
+      errorMessages.push({severity:'error', summary:'Validation Error', detail:'A Note Order must be selected', missingField:"noteOrder"});
+    }
+    
+    if (this.noteTitle == null || this.noteTitle.length < 1) {
+      errorMessages.push({severity:'error', summary:'Validation Error', detail:'A Note Title must be selected', missingField:"noteTitle"});
+    }
+
+    return errorMessages;
+  }
 }

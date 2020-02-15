@@ -11,6 +11,7 @@ import {
   group
 } from '@angular/animations';
 import { SelectItem } from 'primeng/components/common/selectitem';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'test-page-four',
@@ -42,6 +43,7 @@ export class TestPageFourComponent implements OnInit {
   modalAction: string;
   iconOptions: SelectItem[] = [];
   noteOrderOptions: SelectItem[] = [];
+  formMessages: any[] = [];
 
   constructor(private apiService: ApiService) { }
 
@@ -112,29 +114,37 @@ export class TestPageFourComponent implements OnInit {
 
   editNote() {
     this.modalAction = "Edit";
-    this.noteFormModel = this.selectedNote;
+
+    //TODO: Fix this
+    this.noteFormModel = new Note(this.selectedNote.id, this.selectedNote.borderColor, this.selectedNote.mainColor,
+      this.selectedNote.noteTitle,this.selectedNote.note, this.selectedNote.noteOrder, this.selectedNote.icon,
+      this.selectedNote.iconColor);
+
     this.closeNoteSection();
     this.showNoteModal = true;
   }
 
   createNote() {
     console.log("Note form model = , ", this.noteFormModel);
+    this.formMessages = this.noteFormModel.Validate();
 
-    //TODO: Maybe add a dialog asking if the user wants to change the note order of the existing note to the next available spot
-    this.checkExistingNoteOrder(this.noteFormModel.noteOrder);
-
-    if (this.modalAction === "New") {
-      this.apiService.createNote(this.noteFormModel).subscribe((note: Note) => {
-        this.notes.push(note);
-      });
+    if (this.formMessages.length === 0) {
+      //TODO: Maybe add a dialog asking if the user wants to change the note order of the existing note to the next available spot
+      this.checkExistingNoteOrder(this.noteFormModel.noteOrder);
+  
+      if (this.modalAction === "New") {
+        this.apiService.createNote(this.noteFormModel).subscribe((note: Note) => {
+          this.notes.push(note);
+        });
+      }
+      else {
+        this.apiService.updateNote(this.noteFormModel).subscribe((note: Note) => {
+          this.getNotes();
+        });
+      }
+  
+      this.showNoteModal = false;
     }
-    else {
-      this.apiService.updateNote(this.noteFormModel).subscribe((note: Note) => {
-        console.log(note);
-      });
-    }
-
-    this.showNoteModal = false;
   }
 
   getNotes() {
@@ -162,7 +172,7 @@ export class TestPageFourComponent implements OnInit {
     existingNotePositions = existingNotePositions.sort((n1, n2) => n1 - n2);
     existingNoteOrderIndex = this.notes.findIndex(item => item.noteOrder === noteOrder.toString());
 
-    if (existingNoteOrderIndex != -1) {
+    if (existingNoteOrderIndex != -1 && this.notes[existingNoteOrderIndex].id != this.noteFormModel.id) {
       for (var i = 0; i < existingNotePositions.length; i++) {
         if (existingNotePositions[i] - i != 1) {
           this.changeExistingNoteOrder(noteOrder, existingNoteOrderIndex, i);
@@ -184,5 +194,9 @@ export class TestPageFourComponent implements OnInit {
     nextAvailablePosition = i + 1;
     existingNoteOrderIndex = this.notes.findIndex(item => item.noteOrder === noteOrder.toString());
     this.notes[existingNoteOrderIndex].noteOrder = nextAvailablePosition.toString();
+  }
+
+  checkMissingField(field: string) {
+    return this.formMessages.find(item => item.missingField === field);
   }
 }

@@ -200,8 +200,25 @@ p {
   transition: transform 0.2s;
 }
 
+.required {
+  color: red;
+  font-weight: bold;
+}
+
 .ui-dialog .ui-dialog-content {
   overflow: visible !important;
+}
+
+body .ui-dialog .ui-dialog-footer {
+  background-color: #f4f4f4 !important;
+}
+
+.ui-messages {
+  margin: .5em 0 !important;
+}
+
+.ui-messages ul {
+  display: inline-block !important;
 }
 
 /* Center List */

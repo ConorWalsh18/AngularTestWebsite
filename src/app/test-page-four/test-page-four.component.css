@@ -106,16 +106,22 @@
   flex-direction: row;
 }*/
 
+/* .selected-note {
+  transform: scale(1.2);
+  z-index: 1;
+} */
+
 .dot:hover {
   transform: scale(1.2);
   z-index: 1;
 }
 
 .position-container {
-  top: 32%;
+  top: 35%;
   left: 50%;
   height: 30%;
   width: 50%;
+  /* border: 5px solid black; */
 }
 
 .position1 {
@@ -125,22 +131,22 @@
 
 .position2 {
   top: 3%;
-  left: 23%;
+  left: 25%;
 }
 
 .position3 {
   top: 3%;
-  left: 43%;
+  left: 45%;
 }
 
 .position4 {
   top: 3%;
-  left: 63%;
+  left: 65%;
 }
 
 .position5 {
   top: 3%;
-  left: 83%;
+  left: 85%;
 }
 
 .position6 {
@@ -150,22 +156,22 @@
 
 .position7 {
   top: 60%;
-  left: 23%;
+  left: 25%;
 }
 
 .position8 {
   top: 60%;
-  left: 43%;
+  left: 45%;
 }
 
 .position9 {
   top: 60%;
-  left: 63%;
+  left: 65%;
 }
 
 .position10 {
   top: 60%;
-  left: 83%;
+  left: 85%;
 }
 
 button .fa, button .fab, button .fas {

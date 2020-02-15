@@ -1,7 +1,7 @@
 <h1 class="title">Notes</h1>
 
 <!-- Fixed Positions -->
-<div class="center position-container" style="border: 5px solid black;">
+<div class="center position-container">
   <button *ngFor="let note of notes"
           class="dot position{{note.noteOrder}}"
           [ngStyle]="{'border-color': note.borderColor, 'background': note.mainColor}"
@@ -34,7 +34,7 @@
 </div>
 
 <!-- Buttons -->
-<div class="center">
+<div class="center" style="top: 60%">
   <button class="button action-button"
           [@moveNoteButton]="moveNoteButton ? 'moveDown' : 'moveUp'"
           (click)="newNote()">
@@ -50,6 +50,10 @@
 
 <!-- Note Modal -->
 <p-dialog *ngIf="showNoteModal" header="{{modalAction}} Note" [(visible)]="showNoteModal" modal="modal" appendTo="body">
+
+  <p-messages [(value)]="formMessages"></p-messages>
+  <!-- <p-message *ngFor="let message of formMessages" severity="error" text="{{message.detail}}"></p-message> -->
+
   <div class="modalbody">
     <div class="form-td">
       <div class="form-table">
@@ -98,7 +102,7 @@
     <div class="form-td">
       <div class="form-table" style="margin-left: 15px; margin-top: 31px;">
         <div class="form-tr">
-          <label class="form-td">Icon:</label>
+          <label class="form-td" [ngClass]="{'required': checkMissingField('icon')}">Icon:</label>
           <div class="form-td">
             <p-dropdown [options]="iconOptions"
                         [(ngModel)]="noteFormModel.icon"
@@ -118,7 +122,7 @@
           </div>
         </div>
         <div class="form-tr">
-          <label class="form-td">Note Order:</label>
+          <label class="form-td" [ngClass]="{'required': checkMissingField('noteOrder')}">Note Order:</label>
           <div class="form-td">
             <p-dropdown [options]="noteOrderOptions"
                         [(ngModel)]="noteFormModel.noteOrder"
@@ -128,7 +132,7 @@
           </div>
         </div>
         <div class="form-tr">
-          <label class="form-td">Note Title:</label>
+          <label class="form-td" [ngClass]="{'required': checkMissingField('noteTitle')}">Note Title:</label>
           <div class="form-td">
             <input type="text" pInputText [(ngModel)]="noteFormModel.noteTitle" style="height: 31px;" />
           </div>
@@ -140,7 +144,8 @@
     <textarea pInputTextarea [(ngModel)]="noteFormModel.note" placeholder="Enter your note here"></textarea>
   </div>
   <p-footer>
-    <button type="button" pButton icon="pi pi-check" (click)="createNote()" label="Create"></button>
-    <button type="button" pButton icon="pi pi-times" (click)="showNoteModal = false" label="Cancel" class="ui-button-secondary"></button>
+    <button *ngIf="modalAction === 'New'" type="button" pButton icon="pi pi-check" (click)="createNote()" label="Create"></button>
+    <button *ngIf="modalAction === 'Edit'" type="button" pButton icon="pi pi-check" (click)="createNote()" label="Save"></button>
+    <button type="button" pButton icon="pi pi-times" (click)="showNoteModal = false" label="Cancel"></button>
   </p-footer>
 </p-dialog>
