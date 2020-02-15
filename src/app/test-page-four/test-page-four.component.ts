@@ -11,7 +11,8 @@ import {
   group
 } from '@angular/animations';
 import { SelectItem } from 'primeng/components/common/selectitem';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { Message } from 'primeng//api'
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'test-page-four',
@@ -36,7 +37,6 @@ export class TestPageFourComponent implements OnInit {
   moveNoteButton: boolean;
   showNoteSection: boolean;
   notes: Note[] = [];
-  mockNotes: Note[] = [];
   selectedNote: Note;
   noteFormModel: Note;
   showNoteModal: boolean = false;
@@ -44,26 +44,34 @@ export class TestPageFourComponent implements OnInit {
   iconOptions: SelectItem[] = [];
   noteOrderOptions: SelectItem[] = [];
   formMessages: any[] = [];
+  pageMessages: Message[] = [];
+  confirmationHeader: string;
+  confirmationLabel: string;
+  showConfirmationRejectLabel: boolean = true;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
-    //Mock data
-    //this.mockNotes.push(new Note(1, "blue", "deepskyblue", "Note 1", "Test note 1", "position-one", "fas fa-anchor", "black"));
-    //this.mockNotes.push(new Note(2, "darkred", "orangered", "Note 2", "Test note 2", "position-two", "fab fa-angrycreative", "black"));
-    //this.mockNotes.push(new Note(3, "rebeccapurple", "slategray", "Note 3", "Test note 3", "position-three", "fas fa-ankh", "white"));
-    //this.mockNotes.push(new Note(4, "yellow", "aqua", "Note 4", "Test note 4", "position-four", "fas fa-hat-wizard", "pink"));
-    //this.mockNotes.push(new Note(5, "black", "darkorange", "Note 5", "Test note 5", "position-five", "fas fa-carrot", "black"));
-    //this.mockNotes.push(new Note(6, "green", "limegreen", "Note 6", "Test note 6", "position-six", "fab fa-pagelines", "black"));
-    //this.mockNotes.push(new Note(7, "deeppink", "pink", "Note 7", "Test note 7", "position-seven", "fas fa-heart", "black"));
-    //this.mockNotes.push(new Note(8, "burlywood", "antiquewhite", "Note 8", "Test note 8", "position-eight", "fas fa-ghost", "black"));
+    //TODO: Add arrow navigation button to the bottom right corner of all screens
 
     this.getNotes();
 
     this.iconOptions = [
       { label: 'Anchor', value: 'fas fa-anchor' },
       { label: 'Carrot', value: 'fas fa-carrot' },
-      { label: 'Ghost', value: 'fas fa-ghost' }
+      { label: 'Ghost', value: 'fas fa-ghost' },
+      { label: 'Cocktail', value: 'fas fa-cocktail' },
+      { label: 'Birthday Cake', value: 'fas fa-birthday-cake' },
+      { label: 'Wizard Hat', value: 'fas fa-hat-wizard' },
+      { label: 'Dragon', value: 'fas fa-dragon' },
+      { label: 'Frog', value: 'fas fa-frog' },
+      { label: 'Dove', value: 'fas fa-dove' },
+      { label: 'Dog', value: 'fas fa-dog' },
+      { label: 'Lemon', value: 'fas fa-lemon' },
+      { label: 'Paper Plane', value: 'fas fa-paper-plane' },
+      { label: 'Tree', value: 'fas fa-tree' },
+      { label: 'Ice Cream', value: 'fas fa-ice-cream' },
+      { label: 'Crown', value: 'fas fa-chess-king' }
     ];
 
     this.noteOrderOptions = [
@@ -105,14 +113,21 @@ export class TestPageFourComponent implements OnInit {
     }, 100)
   }
 
-  newNote() {
-    this.modalAction = "New";
-    this.noteFormModel = new Note(null, "black", "white", null, null, null, "fas fa-question", "black");
-    this.closeNoteSection();
-    this.showNoteModal = true;
+  newNote(noteOrder: any = null) {
+    if (this.notes.length === 10) {
+      this.showConfirmationDialog("Note Limit Reached", "Ok", false, "You can only have 10 notes at a time.");
+    }
+    else {
+      this.formMessages = [];
+      this.modalAction = "New";
+      this.noteFormModel = new Note(null, "black", "white", null, null, noteOrder, "fas fa-question", "black");
+      this.closeNoteSection();
+      this.showNoteModal = true;
+    }
   }
 
   editNote() {
+    this.formMessages = [];
     this.modalAction = "Edit";
 
     //TODO: Fix this
@@ -153,12 +168,8 @@ export class TestPageFourComponent implements OnInit {
     });
   }
 
-  deleteNote(id: number) {
-    this.closeNoteSection();
-
-    this.apiService.deleteNote(id).subscribe((note: Note) => {
-      this.getNotes();
-    });;
+  deleteNote() {
+    this.showConfirmationDialog("Delete Note", "Yes", true, "Do you want to delete note " + this.selectedNote.noteTitle + "?", "delete");
   }
 
   checkExistingNoteOrder(noteOrder: any) {
@@ -198,5 +209,42 @@ export class TestPageFourComponent implements OnInit {
 
   checkMissingField(field: string) {
     return this.formMessages.find(item => item.missingField === field);
+  }
+
+  showConfirmationDialog(header: string, acceptLabel: string, showRejectLabel: boolean, message: string, action: string = null) {
+    this.confirmationHeader = header;
+    this.confirmationLabel = acceptLabel;
+    this.showConfirmationRejectLabel = showRejectLabel;
+
+    this.confirmationService.confirm({
+      message: message,
+      accept: () => {
+        if (action === "delete") {
+          this.closeNoteSection();
+
+          this.apiService.deleteNote(this.selectedNote.id).subscribe((note: Note) => {
+            this.showPageMessages('success', 'Success', 'Note ' + this.selectedNote.noteTitle + ' was deleted successfully.');
+            this.getNotes();
+          });
+        }
+      }
+    });
+  }
+
+  showPageMessages(severity: string, summary: string, detail: string) {
+    this.pageMessages = [{severity: severity, summary: summary, detail: detail}];
+
+    setTimeout(() => {
+      this.pageMessages = [];      
+    }, 2200);
+  }
+
+  hidePlaceHolder(placeHolderPosition: any) {
+    if (this.notes.length > 0 && this.notes.find(item => item.noteOrder === placeHolderPosition)) {
+      return "hidden";
+    }
+    else {
+      return "visible";
+    }
   }
 }

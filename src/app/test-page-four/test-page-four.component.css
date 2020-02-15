@@ -3,6 +3,14 @@
   font-size: 8rem;
 }
 
+.action-button-container {
+  top: 60%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .action-button {
   background-color: darkorange;
   top: 60%;
@@ -36,7 +44,8 @@
 
 .note-title {
   opacity: 0;
-  color: darkorange;
+  color: black;
+  /* color: darkorange; */
   font-size: 4rem;
   font-weight: 600;
   top: 54%
@@ -67,6 +76,7 @@
   font-size: 2rem;
   margin: 20px;
   text-align: justify;
+  text-transform: none;
 }
 
 /*FLEXBOX CSS*/
@@ -252,4 +262,15 @@ textarea {
 .selected-icon-text-dropdown-item {
   vertical-align: middle;
   margin-left: .5em;
+}
+
+.place-holder-icon {
+  color: limegreen;
+  font-size: 50px !important;
+}
+
+.page-message {
+  display: table;
+  margin: 8px auto;
+  width: 65%;
 }

@@ -1,7 +1,17 @@
+<p-messages class="page-message" [value]="pageMessages"></p-messages>
+
 <h1 class="title">Notes</h1>
 
 <!-- Fixed Positions -->
 <div class="center position-container">
+  <button *ngFor="let placeHolder of noteOrderOptions"
+          class="dot position{{placeHolder.value}}"
+          style="border: 5px dashed black;"
+          [ngStyle]="{'visibility': hidePlaceHolder(placeHolder.value)}"
+          (click)="newNote(placeHolder.value)">
+          <i class="fas fa-plus place-holder-icon"></i>
+  </button>
+
   <button *ngFor="let note of notes"
           class="dot position{{note.noteOrder}}"
           [ngStyle]="{'border-color': note.borderColor, 'background': note.mainColor}"
@@ -26,7 +36,7 @@
 <div *ngIf="selectedNote">
   <h1 class="center note-title" [@showContent]="showNoteSection ? 'show' : 'hide'">
     {{selectedNote.noteTitle}}
-    <i class="note-title-icon {{selectedNote.icon}}"></i>
+    <i class="note-title-icon {{selectedNote.icon}}" [ngStyle]="{'color': selectedNote.iconColor}"></i>
   </h1>
   <div class="note-container" [@showContent]="showNoteSection ? 'show' : 'hide'">
     <p class="note-text">{{selectedNote.note}}</p>
@@ -34,26 +44,17 @@
 </div>
 
 <!-- Buttons -->
-<div class="center" style="top: 60%">
+<div class="center action-button-container" [@moveNoteButton]="moveNoteButton ? 'moveDown' : 'moveUp'">
+  <button class="button action-button" (click)="newNote()">New Note</button>
+  <button class="button action-button" [disabled]="!selectedNote" (click)="editNote()">Edit Note</button>
   <button class="button action-button"
-          [@moveNoteButton]="moveNoteButton ? 'moveDown' : 'moveUp'"
-          (click)="newNote()">
-    New Note
-  </button>
-  <button class="button action-button" [disabled]="!selectedNote" (click)="editNote()">
-    Edit Note
-  </button>
-  <button class="button action-button" [disabled]="!selectedNote" (click)="deleteNote(selectedNote.id)">
-    Delete Note
-  </button>
+          [disabled]="!selectedNote" 
+          (click)="deleteNote()">Delete Note</button>
 </div>
 
 <!-- Note Modal -->
 <p-dialog *ngIf="showNoteModal" header="{{modalAction}} Note" [(visible)]="showNoteModal" modal="modal" appendTo="body">
-
   <p-messages [(value)]="formMessages"></p-messages>
-  <!-- <p-message *ngFor="let message of formMessages" severity="error" text="{{message.detail}}"></p-message> -->
-
   <div class="modalbody">
     <div class="form-td">
       <div class="form-table">
@@ -149,3 +150,10 @@
     <button type="button" pButton icon="pi pi-times" (click)="showNoteModal = false" label="Cancel"></button>
   </p-footer>
 </p-dialog>
+
+<p-confirmDialog #cd header="{{confirmationHeader}}" icon="pi pi-exclamation-triangle" appendTo="body">
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" label="{{confirmationLabel}}" (click)="cd.accept()"></button>
+    <button *ngIf="showConfirmationRejectLabel" type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+  </p-footer>
+</p-confirmDialog>

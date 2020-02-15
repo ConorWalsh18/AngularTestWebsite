@@ -1,3 +1,5 @@
+drop table notes;
+
 create table notes (
   id INT NOT NULL AUTO_INCREMENT,
   borderColor TEXT,
