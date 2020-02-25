@@ -9,7 +9,7 @@
     <li (click)="switchPage('testPageTwo')">Traversal</li>
     <li (click)="switchPage('testPageThree')">Bite</li>
     <li (click)="switchPage('testPageFour')">Notes</li>
-    <li (click)="switchPage('testPageFive')">Test Page 5</li>
+    <li (click)="switchPage('testPageFive')">Switch View</li>
   </ul>
 </div>
 
@@ -35,5 +35,19 @@
 </div>
 
 <div class="test-page test-page-five">
-  <h1>Test Page 5</h1>
+  <test-page-five (changeView)="changeView.emit()"></test-page-five>
 </div>
+
+<button type="button"
+        class="next-page-button next-page-button-right"
+        [disabled]="disableRightArrow"
+        (click)="arrowButtonNavigation('forward')">
+  <i class="fas fa-arrow-right"></i>
+</button>
+
+<button type="button"
+        class="next-page-button next-page-button-left"
+        [disabled]="disableLeftArrow"
+        (click)="arrowButtonNavigation('backward')">
+  <i class="fas fa-arrow-left"></i>
+</button>

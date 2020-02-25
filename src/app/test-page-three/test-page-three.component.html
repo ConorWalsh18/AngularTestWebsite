@@ -3,11 +3,19 @@
      (click)="biteButton(true)">
 </div>
 
-<button class="dot bite-dot"
+<!-- Square Bite Button -->
+<button class="center square-bite-button"
         [ngStyle]="{ 'z-index': biteButtonOnTop ? 2 : 0}"
         (click)="biteButton(false)">
   Bite
 </button>
+
+<!-- Circle Cite Button -->
+<!-- <button class="dot bite-dot"
+        [ngStyle]="{ 'z-index': biteButtonOnTop ? 2 : 0}"
+        (click)="biteButton(false)">
+  Bite
+</button> -->
 
 <div class="brightmare-bottom-half center"
      [@biteBottomHalf]="bite"

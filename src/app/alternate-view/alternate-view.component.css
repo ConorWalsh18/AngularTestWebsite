@@ -11,19 +11,20 @@
 
 .title {
   color: white;
-  font-size: 4rem;
+  font-size: -webkit-xxx-large;
   display: inline-block;
   text-transform: uppercase;
   font-weight: bold;
-  margin: -4px 0px 0px 45px;
+  margin-left: 12px;
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
+  cursor: pointer;
 }
 
 .menu-list {
   list-style-type: none;
   float: right;
-  margin-top: 15px;
+  margin-top: 0%;
   display: inline-block;
   height: 100%;
 }
@@ -45,6 +46,7 @@
   font-weight: bold;
   margin-right: 20px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .title:hover, .menu-list li:hover {
@@ -116,4 +118,46 @@
 
 .test-page-five h1 {
   color: deeppink;
+}
+
+.next-page-button {
+  position: fixed;
+  bottom: 0;
+  color: #ffffff;
+  background-color: deepskyblue;
+  border: 1px solid deepskyblue;
+  font-size: 20px;
+  -moz-transition: all 0.2s, box-shadow 0.2s;
+  -o-transition: all 0.2s, box-shadow 0.2s;
+  -webkit-transition: all 0.2s, box-shadow 0.2s;
+  transition: all 0.2s, box-shadow 0.2s;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.next-page-button-right {
+  margin: 0px 10px 10px 0px;
+  right: 0;
+}
+
+.next-page-button-right:active {
+  right: -5px;
+}
+
+.next-page-button-left {
+  margin: 0px 0px 10px 10px;
+  left: 0;
+}
+
+.next-page-button-left:active {
+  left: -5px;
+}
+
+.next-page-button:disabled {
+  background-color: slategrey;
+  border: slategray;
+  pointer-events: none;
 }

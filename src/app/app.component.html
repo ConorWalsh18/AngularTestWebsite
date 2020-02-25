@@ -1,21 +1,17 @@
 <!-- With splash page -->
-<!--<app-splashpage *ngIf="!showMainPage"
+<app-splashpage *ngIf="!showMainPage && !showAlternateView"
                 (showMainPage)="showMainPage = true"
                 (hideMainPage)="showMainPage = false">
-</app-splashpage>-->
+</app-splashpage>
 
-<!--<app-main *ngIf="showMainPage"
-          (navigateToGreenPage)="showGreenPage = true">
-</app-main>-->
+<app-main *ngIf="showMainPage"
+            (navigateToGreenPage)="showGreenPage = true"
+            (changeView)="switchView('alternate')">
+</app-main>
 
-
-<!-- Without splash page -->
-<!--<app-main (navigateToGreenPage)="showGreenPage = true"></app-main>
-
-<green-page *ngIf="showGreenPage" (goHome)="showGreenPage = false"></green-page>-->
-
+<green-page *ngIf="showGreenPage" (goHome)="showGreenPage = false"></green-page>
 
 <!-- Alternate view -->
-<alternate-view></alternate-view>
+<alternate-view *ngIf="showAlternateView" (changeView)="switchView('main')"></alternate-view>
 
 

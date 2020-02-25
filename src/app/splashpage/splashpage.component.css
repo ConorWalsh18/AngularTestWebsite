@@ -2,7 +2,7 @@
   height: 50vh;
   width: 50%;
   opacity: 1;
-  background-color: lightblue;
+  background-color: rebeccapurple;
 }
 
 .top-right {  
@@ -18,9 +18,9 @@
 }
 
 .enter-button {
-  color: #ffffff;
-  background-color: green;
-  border: 1px solid green;
+  color: rebeccapurple;
+  background-color: white;
+  border: 1px solid white;
   height: 130px;
   width: 130px;
   display: block;
@@ -34,6 +34,6 @@
 
 .enter-text {
   font-size: 32px;
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
   transform: rotate(-45deg);
 }

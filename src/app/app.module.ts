@@ -30,6 +30,7 @@ import { TestPageThreeComponent } from './test-page-three/test-page-three.compon
 import { TestPageFourComponent } from './test-page-four/test-page-four.component';
 
 import { ColorPickerModule } from 'ngx-color-picker';
+import { TestPageFiveComponent } from './test-page-five/test-page-five.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ColorPickerModule } from 'ngx-color-picker';
     TestPageOneComponent,
     TestPageTwoComponent,
     TestPageThreeComponent,
-    TestPageFourComponent
+    TestPageFourComponent,
+    TestPageFiveComponent
   ],
   imports: [
     BrowserModule,

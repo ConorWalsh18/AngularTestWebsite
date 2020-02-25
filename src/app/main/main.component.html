@@ -24,13 +24,14 @@
   <button class="dot pink-dot"
           [@movePinkDot]="!moveDots ? 'start' : 'end'"          
           (@movePinkDot.done)="showAllIcons()"
-          (mouseenter)="buttonHover(true, 'Pink Page')"
+          (click)="changeView.emit()"
+          (mouseenter)="buttonHover(true, 'Switch View')"
           (mouseleave)="buttonHover(false)">
     <i [@showContent]="showIcons ? 'show' : 'hide'" class="fas fa-atom"></i>
   </button>
 </div>
 
-<p [@showContent]="showIcons ? 'show' : 'hide'">
+<p class="center" [@showContent]="showIcons ? 'show' : 'hide'">
   {{centerCircleMessage}}
 </p>
 

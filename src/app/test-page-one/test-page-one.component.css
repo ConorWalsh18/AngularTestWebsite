@@ -8,14 +8,15 @@ button:hover {
 
 .center-circle-message-closed {
   color: black;
-  line-height: 62.5rem;
+  top: 40%;
   font-size: 8rem;
   opacity: 0;
 }
 
 .center-circle-message-open {
   color: white;
-  line-height: 15rem;
+  line-height: 10rem;
+  /* line-height: 15rem; */
   font-size: 8rem;
 }
 
@@ -44,8 +45,10 @@ button:hover {
   transform: translate(-50%, -50%);
   border: 9px solid black;
   border-radius: 50%;
-  height: 900px;
-  width: 900px;
+  height: 80%;
+  width: 695px;
+  /* height: 900px;
+  width: 900px; */
   display: inline-block;
 }
 

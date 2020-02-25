@@ -41,14 +41,14 @@ import {
 })
 
 export class SplashpageComponent implements OnInit {
-
-  constructor() { }
-
+  
   @Output() showMainPage = new EventEmitter();
   @Output() hideMainPage = new EventEmitter();
 
   isOpen: boolean = true;
   showResetButton: boolean = false;
+  
+  constructor() { }
 
   ngOnInit() {
   }

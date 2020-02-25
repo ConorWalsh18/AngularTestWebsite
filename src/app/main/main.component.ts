@@ -65,6 +65,7 @@ declare var $: any;
 export class MainComponent implements OnInit {
 
   @Output() navigateToGreenPage = new EventEmitter();
+  @Output() changeView = new EventEmitter();
 
   moveDots: boolean = true;
   showIcons: boolean = false;
@@ -76,7 +77,7 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    
   }
 
   buttonHover(hover: boolean, page: string = null) {

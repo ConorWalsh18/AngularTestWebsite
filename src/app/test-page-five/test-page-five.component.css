@@ -1,0 +1,23 @@
+.title {
+    color: deeppink;
+    font-size: 8rem;
+}
+
+.switch-view-button {
+    background: deeppink;
+    position: absolute;
+    left: 35%;
+    top: 95%;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.switch-view-button:hover {
+    transform: scale(1.2);
+}
+
+.switch-view-button:active {
+    top: 100%;
+}

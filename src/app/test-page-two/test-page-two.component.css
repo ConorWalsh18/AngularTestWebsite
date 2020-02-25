@@ -1,3 +1,9 @@
+.top-title {
+  color: rebeccapurple;
+  /*line-height: 50rem;*/
+  font-size: 8rem;
+}
+
 .title {
   color: rebeccapurple;
   /*line-height: 50rem;*/
@@ -17,25 +23,30 @@
   color: white;
   font-size: 20px;
   font-weight: bold;
-  -moz-transition: transform 0.2s;
-  -o-transition: transform 0.2s;
-  -webkit-transition: transform 0.2s;
-  transition: transform 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
   outline: 0;
+  cursor: pointer;
 }
 
 .go-down-button {
   background-color: rebeccapurple;
   color: white;
+  position: absolute;
+  left: 35%;
+  top: 95%;
 }
 
 .go-up-button {
   background-color: white;
   color: rebeccapurple;
+  top: 52%;
 }
 
 .go-down-button:active {
-  transform: translate(-50%, -35%);
+  top: 97%;
 }
 
 .go-up-button:active {

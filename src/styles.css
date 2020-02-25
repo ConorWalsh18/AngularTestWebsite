@@ -4,8 +4,10 @@
 /* MAIN PAGE COMPONENT CSS
 /***************************/
 
-/*body {
-  background-color: deepskyblue;
+body {
+  font-family: 'Saira Extra Condensed', serif;
+  height: 200%;
+  overflow: hidden;
 }
 
 .full-page {
@@ -23,7 +25,7 @@
   position: absolute;
 }
 
-.button {
+app-main .button {
   color: #ffffff;
   background-color: green;
   border: 1px solid green;
@@ -34,9 +36,9 @@
   transition: background-color 0.2s, box-shadow 0.2s;
   border-radius: 3px;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
   display: block;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .back-button {
@@ -54,14 +56,14 @@
   transition: background-color 0.2s, box-shadow 0.2s;
   border-radius: 3px;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  cursor: pointer;
 }
 
 .button:active, .back-button:active {
   transform: translateY(2px);
 }
 
-h1 {
+app-main h1, green-page h1 {
   text-align: center;
   font-family: 'Saira Extra Condensed', serif;
   text-transform: uppercase;
@@ -70,7 +72,7 @@ h1 {
   line-height: 5.5rem;
 }
 
-p {
+app-main p {
   text-align: center;
   font-family: 'Saira Extra Condensed', serif;
   text-transform: uppercase;
@@ -79,17 +81,17 @@ p {
   line-height: 1rem;
 }
 
-.form-table {
+app-main .form-table {
   display: inline-table;
   vertical-align: top;
 }
 
-.form-tr {
+app-main .form-tr {
   display: table-row;
   height: 32px;
 }
 
-.form-td {
+app-main .form-td {
   display: table-cell;
   padding: 5px;
   margin: 3px;
@@ -115,7 +117,7 @@ p {
 
 .ui-card {
   height: 500px;
-  width: 400px;
+  width: 90%;
   box-shadow: 9px 9px 5px rgba(0, 0, 0, 0.2) !important;
   overflow: hidden;
 }
@@ -123,34 +125,24 @@ p {
 .ui-card-header img {
   width: 100%;
   height: 250px;
-}*/
-
-
-
+}
 
 /*******************************/
 /* ALTERNATE VIEW COMPONENT CSS
 /*******************************/
 
-body {
+/* body {
   font-family: 'Saira Extra Condensed', serif;
   width: 600%;
   height: 200%;
   overflow: hidden;
-}
-
-.center {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute;
-}
+} */
 
 button {
   outline: none;
 }
 
-.button {
+alternate-view .button {
   width: 150px;
   height: 40px;
   border: none;
@@ -162,13 +154,14 @@ button {
   -webkit-transition: transform 0.2s;
   transition: transform 0.2s;
   outline: 0;
+  cursor: pointer;
 }
 
-.button:active {
+alternate-view .button:active {
   transform: translate(-50%, -35%);
 }
 
-h1 {
+alternate-view h1 {
   text-align: center;  
   text-transform: uppercase;
   color: white;
@@ -176,7 +169,7 @@ h1 {
   line-height: 2rem;
 }
 
-p {
+alternate-view p {
   text-align: center;
   text-transform: uppercase;
   color: black;
@@ -185,8 +178,8 @@ p {
 }
 
 .dot {
-  top: 42.7%;
-  right: 42.7%;
+  top: 40%;
+  right: 40%;
   position: absolute;
   height: 130px;
   width: 130px;
@@ -198,6 +191,7 @@ p {
   -o-transition: transform 0.2s;
   -webkit-transition: transform 0.2s;
   transition: transform 0.2s;
+  cursor: pointer;
 }
 
 .required {
