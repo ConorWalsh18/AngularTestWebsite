@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Note } from './note';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,17 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  readPolicies(): Observable<Note[]> {
+  //User DB calls
+  getUser(user: User): Observable<User> {
+    return this.httpClient.get<User>(`${this.PHP_API_SERVER}/api/getUser.php/?userName=${user.userName}&pw=${user.password}`);
+  }
+
+  createUser(user: User): Observable<User>{
+    return this.httpClient.post<User>(`${this.PHP_API_SERVER}/api/createUser.php`, user);
+  }
+
+  //Note DB calls
+  getNotes(): Observable<Note[]> {
     return this.httpClient.get<Note[]>(`${this.PHP_API_SERVER}/api/read.php`);
   }
 

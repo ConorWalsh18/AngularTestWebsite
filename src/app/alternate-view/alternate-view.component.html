@@ -10,12 +10,14 @@
     <li (click)="switchPage('testPageThree')">Bite</li>
     <li (click)="switchPage('testPageFour')">Notes</li>
     <li (click)="switchPage('testPageFive')">Switch View</li>
+    <li (click)="changeView.emit('logout')">Log Out</li>
   </ul>
 </div>
 
 <!-- Pages -->
 <div id="homePage" class="test-page">
   <h1>Home Page</h1>
+  <h2>Welcome {{loggedInUser.firstName}} {{loggedInUser.lastName}}</h2>
 </div>
 
 <div class="test-page test-page-one">
@@ -35,7 +37,7 @@
 </div>
 
 <div class="test-page test-page-five">
-  <test-page-five (changeView)="changeView.emit()"></test-page-five>
+  <test-page-five (changeView)="changeView.emit('main')"></test-page-five>
 </div>
 
 <button type="button"

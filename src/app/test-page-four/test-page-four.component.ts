@@ -51,11 +51,10 @@ export class TestPageFourComponent implements OnInit {
 
   constructor(private apiService: ApiService, private confirmationService: ConfirmationService) { }
 
-  ngOnInit() {
-    //TODO: Add arrow navigation button to the bottom right corner of all screens
-
+  ngOnInit() {  
     this.getNotes();
 
+    //TODO: Add these dropdown options to a DB table and pull from there instead of creating them here
     this.iconOptions = [
       { label: 'Anchor', value: 'fas fa-anchor' },
       { label: 'Carrot', value: 'fas fa-carrot' },
@@ -163,7 +162,7 @@ export class TestPageFourComponent implements OnInit {
   }
 
   getNotes() {
-    this.apiService.readPolicies().subscribe((notes: Note[]) => {
+    this.apiService.getNotes().subscribe((notes: Note[]) => {
       this.notes = notes;
     });
   }

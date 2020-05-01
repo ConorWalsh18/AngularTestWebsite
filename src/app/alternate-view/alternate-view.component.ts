@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import {
   trigger,
   state,
@@ -7,6 +7,7 @@ import {
   transition
 } from '@angular/animations';
 import { Observable } from 'rxjs';
+import { User } from '../user';
 
 @Component({
   selector: 'alternate-view',
@@ -16,6 +17,7 @@ import { Observable } from 'rxjs';
 })
 export class AlternateViewComponent implements OnInit {
 
+  @Input() loggedInUser = User;
   @Output() changeView = new EventEmitter();
   
   testPageOneState: string = "initial";
@@ -28,6 +30,7 @@ export class AlternateViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.loggedInUser);
     this.disableArrowButtons(0);
     window.scroll({ top: 0 });
   }

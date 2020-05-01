@@ -8,6 +8,7 @@ import {
   query,
   group
 } from '@angular/animations';
+import { User } from './user';
 
 @Component({
   selector: 'app-root',
@@ -23,30 +24,45 @@ import {
 })
 
 export class AppComponent implements OnInit {
+  loggedIn: boolean = false;
+  loggedInUser: User;
   showMainPage: boolean = false;
   showAlternateView: boolean = true;
   showGreenPage: boolean = false;
 
   ngOnInit() {
-    
+    //TEMP
+    document.getElementsByTagName("body")[0].style.backgroundColor = "deepskyblue";
+    document.getElementsByTagName("body")[0].style.width = "100%";
+  }
+
+  handleLogin(user: User) {
+    this.loggedInUser = user;
+    this.loggedIn = true;
+    this.switchView('alternate');
   }
 
   switchView(view: string) {
-    if (view === "main") {
-      this.showAlternateView = false;
-      this.showMainPage = false;
-
-      setTimeout(() => {
+    switch (view) {
+      case "main":
+        this.showAlternateView = false;
+        this.showMainPage = false;  
+        setTimeout(() => {
+          document.getElementsByTagName("body")[0].style.backgroundColor = "deepskyblue";
+          document.getElementsByTagName("body")[0].style.width = "100%";
+        }, 700);
+        break;
+      case "alternate":
+        this.showMainPage = false;
+        this.showAlternateView = true;
+        document.getElementsByTagName("body")[0].style.backgroundColor = "white";
+        document.getElementsByTagName("body")[0].style.width = "600%";
+        break;
+      case "logout":
+        this.loggedIn = false;
         document.getElementsByTagName("body")[0].style.backgroundColor = "deepskyblue";
         document.getElementsByTagName("body")[0].style.width = "100%";
-      }, 700);
-    }
-    else if (view === "alternate") {
-      this.showMainPage = false;
-      this.showAlternateView = true;
-
-      document.getElementsByTagName("body")[0].style.backgroundColor = "white";
-      document.getElementsByTagName("body")[0].style.width = "600%";
+        break;
     }
   }
 }

@@ -1,0 +1,31 @@
+<div class="center" style="top: 33%;">
+    <h1 class="title">Log In</h1>
+
+    <div *ngIf="showCreateAccountInfo">
+        <div class="label-container">
+            <label>First name:</label>
+        </div>
+        <input type="text" pInputText [(ngModel)]="user.firstName"/>
+        <div class="label-container">
+            <label>Last name:</label>
+        </div>
+        <input type="text" pInputText [(ngModel)]="user.lastName" />
+    </div>
+    <div class="label-container">
+        <label>Username:</label>
+    </div>
+    <input type="text" pInputText [(ngModel)]="user.userName"/>
+    <div class="label-container">
+        <label>Password:</label>
+    </div>
+    <input type="password" pInputText [(ngModel)]="user.password" />
+
+    <div *ngIf="!showCreateAccountInfo">
+        <button class="button" (click)="login()">Log In</button>
+        <button class="button" (click)="accountSetup()">Sign up</button>
+    </div>
+    <div *ngIf="showCreateAccountInfo">
+        <button class="button" (click)="createAccount()">Create account</button>
+        <button class="button" (click)="showCreateAccountInfo = false">Cancel</button>
+    </div>
+</div>
