@@ -1,24 +1,17 @@
-<login-page *ngIf="!loggedIn" (changeView)="handleLogin($event)"></login-page>
+<!-- With splash page -->
+<app-splashpage *ngIf="!showMainPage && !showAlternateView"
+                (showMainPage)="showMainPage = true"
+                (hideMainPage)="showMainPage = false">
+</app-splashpage>
 
-<div *ngIf="loggedIn">
-    <!-- First view -->
-    <alternate-view *ngIf="showAlternateView"
-                    (changeView)="switchView($event)"
-                    [loggedInUser]="loggedInUser">
-    </alternate-view>
-    
-    <!-- Second view with splash page -->
-    <app-splashpage *ngIf="!showMainPage && !showAlternateView"
-                    (showMainPage)="showMainPage = true"
-                    (hideMainPage)="showMainPage = false">
-    </app-splashpage>
-    
-    <app-main *ngIf="showMainPage"
-                (navigateToGreenPage)="showGreenPage = true"
-                (changeView)="switchView('alternate')">
-    </app-main>
-    
-    <green-page *ngIf="showGreenPage" (goHome)="showGreenPage = false"></green-page>
-</div>
+<app-main *ngIf="showMainPage"
+            (navigateToGreenPage)="showGreenPage = true"
+            (changeView)="switchView('alternate')">
+</app-main>
+
+<green-page *ngIf="showGreenPage" (goHome)="showGreenPage = false"></green-page>
+
+<!-- Alternate view -->
+<alternate-view *ngIf="showAlternateView" (changeView)="switchView('main')"></alternate-view>
 
 

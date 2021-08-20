@@ -142,7 +142,7 @@ button {
   outline: none;
 }
 
-alternate-view .button, login-page .button {
+alternate-view .button {
   width: 150px;
   height: 40px;
   border: none;
@@ -157,12 +157,8 @@ alternate-view .button, login-page .button {
   cursor: pointer;
 }
 
-alternate-view .button:active, login-page .button:active {
+alternate-view .button:active {
   transform: translate(-50%, -35%);
-}
-
-login-page .button:active {
-  transform: translateY(10px);
 }
 
 alternate-view h1 {
@@ -171,13 +167,6 @@ alternate-view h1 {
   color: white;
   font-size: 5rem;
   line-height: 2rem;
-}
-
-alternate-view h2 {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 2.8rem;
-  line-height: 50rem;
 }
 
 alternate-view p {

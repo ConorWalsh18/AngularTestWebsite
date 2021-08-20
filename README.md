@@ -1,6 +1,6 @@
 # AngularPractice
 
-Ohhh what up test website.
+This is an Angular sandbox website to test, practice and play around with different Angular functionalities.
 
 # Setup Commands
 
